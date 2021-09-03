@@ -10,7 +10,7 @@ example_PROGRAMS = CursesTest
 CursesTest_SOURCES = CursesTest.c
 CursesTest_LDADD = -lcunit -lcunitexamples
 CursesTest_LDFLAGS = -L.. -lm
-INCLUDES = -I..
+AM_CPPFLAGS = -I..
 
 if ENABLE_CURSES
 CursesTest_LDADD += -l$(CURSES_LIB)

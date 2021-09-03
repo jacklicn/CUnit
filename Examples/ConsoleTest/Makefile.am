@@ -10,7 +10,7 @@ example_PROGRAMS = ConsoleTest
 ConsoleTest_SOURCES = ConsoleTest.c
 ConsoleTest_LDADD = -lcunit -lcunitexamples
 ConsoleTest_LDFLAGS = -L.. -lm
-INCLUDES = -I..
+AM_CPPFLAGS = -I..
 
 if ENABLE_CURSES
 ConsoleTest_LDADD += -l$(CURSES_LIB)

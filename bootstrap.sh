@@ -1,3 +1,5 @@
+#!/bin/sh
+
 INSTALL_HOME=
 if [ $# -gt 0 ]; then
 	INSTALL_HOME=$1
@@ -7,11 +9,7 @@ if [ "$INSTALL_HOME"X == "X" ]; then
 	INSTALL_HOME=$HOME/CUnitHome
 fi
 
-libtoolize --force --copy && \
-aclocal && \
-autoheader && \
-automake --add-missing --include-deps --copy && \
-autoconf
+autoreconf -i -f
 
 if [ $? -ne 0 ]; then
 	echo "Automake/Autoconf returned with error."

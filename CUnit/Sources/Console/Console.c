@@ -502,22 +502,22 @@ static void list_suites(CU_pTestRegistry pRegistry)
 
   fprintf(stdout, "\n%s",   _("--------------------- Registered Suites -----------------------------"));
   fprintf(stdout, "\n%*s  %-*s%*s%*s%*s%*s\n",
-                  width[0], _("#"),
-                  width[1], _("Suite Name"),
-                  width[2], _("Init?"),
-                  width[3], _("Cleanup?"),
-                  width[4], _("#Tests"),
-                  width[5], _("Active?"));
+          (int)width[0], _("#"),
+          (int)width[1], _("Suite Name"),
+          (int)width[2], _("Init?"),
+          (int)width[3], _("Cleanup?"),
+          (int)width[4], _("#Tests"),
+          (int)width[5], _("Active?"));
 
   for (i = 1, pCurSuite = pRegistry->pSuite; (NULL != pCurSuite); pCurSuite = pCurSuite->pNext, ++i) {
     assert(NULL != pCurSuite->pName);
     fprintf(stdout, "\n%*d. %-*.*s%*s%*s%*u%*s",
-            width[0], i,
-            width[1], width[1] - 1, pCurSuite->pName,
-            width[2]-1, (NULL != pCurSuite->pInitializeFunc) ? _("Yes") : _("No"),
-            width[3],   (NULL != pCurSuite->pCleanupFunc) ? _("Yes") : _("No"),
-            width[4],   pCurSuite->uiNumberOfTests,
-            width[5],   (CU_FALSE != pCurSuite->fActive) ? _("Yes") : _("No"));
+            (int)width[0], i,
+            (int)width[1], (int)width[1] - 1, pCurSuite->pName,
+            (int)width[2]-1, (NULL != pCurSuite->pInitializeFunc) ? _("Yes") : _("No"),
+            (int)width[3],   (NULL != pCurSuite->pCleanupFunc) ? _("Yes") : _("No"),
+            (int)width[4],   pCurSuite->uiNumberOfTests,
+            (int)width[5],   (CU_FALSE != pCurSuite->fActive) ? _("Yes") : _("No"));
   }
   fprintf(stdout, "\n---------------------------------------------------------------------\n");
   fprintf(stdout, _("Total Number of Suites : %-u"), pRegistry->uiNumberOfSuites);
@@ -558,18 +558,18 @@ static void list_tests(CU_pSuite pSuite)
                   _("----------------- Test List ------------------------------"));
   fprintf(stdout, "\n%s%s\n", _("Suite: "), pSuite->pName);
   fprintf(stdout, "\n%*s  %-*s%*s\n",
-                  width[0], _("#"),
-                  width[1], _("Test Name"),
-                  width[2], _("Active?"));
+          (int)width[0], _("#"),
+          (int)width[1], _("Test Name"),
+          (int)width[2], _("Active?"));
 
   for (uiCount = 1, pCurTest = pSuite->pTest ;
        NULL != pCurTest ;
        uiCount++, pCurTest = pCurTest->pNext) {
     assert(NULL != pCurTest->pName);
     fprintf(stdout, "\n%*u. %-*.*s%*s",
-                    width[0], uiCount,
-                    width[1], width[1]-1, pCurTest->pName,
-                    width[2]-1, (CU_FALSE != pCurTest->fActive) ? _("Yes") : _("No"));
+            (int)width[0], uiCount,
+            (int)width[1], (int)width[1]-1, pCurTest->pName,
+            (int)width[2]-1, (CU_FALSE != pCurTest->fActive) ? _("Yes") : _("No"));
   }
   fprintf(stdout, "\n----------------------------------------------------------\n");
   fprintf(stdout, _("Total Number of Tests : %-u"), pSuite->uiNumberOfTests);

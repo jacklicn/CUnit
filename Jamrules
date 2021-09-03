@@ -30,7 +30,7 @@ if $(OS) = LINUX || $(UNIX)
   VERSION_MINOR = 1 ;
   
   # root of install path
-  prefix = /Users/aks/CUnitHome ;
+  prefix = /Users/afalls/code/build ;
 
   # choice of interfaces to build into library
   if TRUE = TRUE
@@ -47,11 +47,11 @@ if $(OS) = LINUX || $(UNIX)
 #  BUILD_WINDOWS = 1 ;
   
   # choice of whether to build examples
-  if TRUE = TRUE
+  if FALSE = TRUE
     { BUILD_EXAMPLES = 1 ; }
   
   # choice of whether to build test program
-  if TRUE = TRUE
+  if FALSE = TRUE
     { BUILD_TEST = 1 ; }
   
   # choice of whether to build shared library
@@ -63,11 +63,11 @@ if $(OS) = LINUX || $(UNIX)
     { BUILD_STATIC_LIB = 1 ; }
 
   # debug compilation mode
-  if TRUE = FALSE
+  if FALSE = FALSE
     { NODEBUG = 1 ; }
 
   # Use memory tracing
-  if TRUE = TRUE
+  if FALSE = TRUE
     { USE_MEMTRACE = -DMEMTRACE ; }
 
   # Recognize deprecated version 1.1 function names and build V1.1 examples

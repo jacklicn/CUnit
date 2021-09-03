@@ -111,13 +111,11 @@ Linux:
 
   In addition to jam, the standard GNU build system is still supported.
   The usual sequence of steps should succeed in building and installing CUnit:
-    1. aclocal  (if necessary)
-    2. autoconf (if necessary)
-    3. automake (if necessary)
-    4. chmod u+x configure (if necessary)
-    5. ./configure --prefix <Your choice of directory for installation>
-    6. make
-    7. make install
+    1. autoreconf -f -i
+    2. chmod u+x configure (if necessary)
+    3. ./configure --prefix <Your choice of directory for installation>
+    4. make
+    5. make install
 
   What's installed:
     1. libcunit.a (Library file)
