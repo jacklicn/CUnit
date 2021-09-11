@@ -1,6 +1,6 @@
 dnl Applied patch to handle AC_ARG_ENABLE targets (Patch 1250604) - Provided by Andrew Kephart <andrew.kephart@alereon.com
 
-AC_INIT(CUnit, 2.1-3)
+AC_INIT([CUnit],[2.1-3])
 AM_INIT_AUTOMAKE(CUnit, 2.1-3)
 
 dnl Package version information
@@ -158,7 +158,7 @@ dnl Check for programs.
 AC_PROG_CC
 AC_PROG_INSTALL
 AC_PROG_MAKE_SET
-AC_PROG_LIBTOOL
+LT_INIT
 
 dnl Check for libraries
 AC_CHECK_LIB(c, main)
@@ -199,7 +199,14 @@ AC_CHECK_FUNC(time, [], [echo time not found; exit 1])
 AC_CHECK_FUNC(ctime, [], [echo ctime not found; exit 1])
 
 dnl Check for header files.
-AC_HEADER_STDC
+m4_warn([obsolete],
+[The preprocessor macro `STDC_HEADERS' is obsolete.
+  Except in unusual embedded environments, you can safely include all
+  ISO C90 headers unconditionally.])dnl
+# Autoupdate added the next two lines to ensure that your configure
+# script's behavior did not change.  They are probably safe to remove.
+AC_PROG_EGREP
+
 AC_CHECK_HEADERS(assert.h)
 AC_CHECK_HEADERS(ctype.h)
 AC_CHECK_HEADERS(math.h)
@@ -208,7 +215,7 @@ AC_CHECK_HEADERS(stdio.h)
 AC_CHECK_HEADERS(stdlib.h)
 AC_CHECK_HEADERS(string.h)
 
-AM_CONFIG_HEADER(config.h)
+AC_CONFIG_HEADERS(config.h)
 
 dnl Check for typedefs, structures, and compiler characteristics.
 AC_C_CONST
